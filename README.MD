@@ -1,47 +1,42 @@
 
 # Guía de Scripting en Bash desde Cero
 
-Guía de estudio de los lenguajes de scripting en sistemas operativos, organizada a partir del documento de clase **Ud1. - Lenguajes de scripting en Sistemas Operativos**.
+Guía de estudio organizada por capítulos, con ejemplos y ejercicios de práctica basados en el material de clase **Ud1. - Lenguajes de scripting en Sistemas Operativos**.
 
 ## Objetivos
 
 - Comprender qué es un script Bash.
 - Aprender a crear, ejecutar y depurar scripts.
 - Trabajar con entrada, salida y variables.
-- Utilizar condiciones, operaciones y bucles.
-- Aprender a pasar parámetros y crear funciones.
-- Practicar con ejercicios progresivos.
+- Practicar operaciones, condiciones y bucles.
+- Utilizar parámetros, funciones y menús.
+- Resolver ejercicios al final de cada capítulo.
 
-## Contenido
+## Índice de capítulos
 
-1. Introducción a Bash.
-2. Creación, ejecución y depuración de scripts.
-3. Salida estándar y entrecomillado.
-4. Entrada estándar y variables.
-5. Variables especiales y de entorno.
-6. Expresiones y operaciones algebraicas.
-7. Condicionales `if` y `case`.
-8. Bucles `for`, `while` y `until`.
-9. Paso de parámetros.
-10. Menús con `select`.
-11. Funciones y códigos de retorno.
-12. Introducción a `dialog`.
-13. Ejercicios prácticos.
+1. [Introducción a Bash](capitulos/01-introduccion.md)
+2. [Entrada, salida y variables](capitulos/02-entrada-salida-variables.md)
+3. [Operaciones y expresiones](capitulos/03-operaciones.md)
+4. [Condicionales](capitulos/04-condicionales.md)
+5. [Bucles](capitulos/05-bucles.md)
+6. [Parámetros y funciones](capitulos/06-parametros-funciones.md)
+7. [Depuración y dialog](capitulos/07-depuracion-dialog.md)
 
-## Archivos del repositorio
+## Documentación general
 
-- [Guía de estudio](GUIA.md)
-- [Ejercicios prácticos y soluciones](EJERCICIOS.md)
+- [Guía completa](GUIA.md)
+- [Ejercicios generales y soluciones](EJERCICIOS.md)
 
-## Cómo utilizar esta guía
+## Cómo estudiar
 
-1. Lee cada apartado de la guía.
-2. Copia los ejemplos en un archivo de texto cuando quieras probarlos.
-3. Compara el resultado obtenido con el comportamiento explicado.
-4. Intenta resolver los ejercicios antes de consultar las soluciones.
+1. Lee los capítulos en orden.
+2. Copia y prueba los ejemplos en un entorno que permita ejecutar Bash.
+3. Intenta resolver los ejercicios antes de consultar las soluciones.
+4. Revisa los resultados y anota las dudas.
+5. Marca la lista de comprobación de cada capítulo.
 
 ## Fuente
 
-Material de clase: **Ud1. - Lenguajes de scripting en sistemas operativos**, CFGS de Administración de Sistemas Informáticos en Red.
+Material de clase: **Ud1. - Lenguajes de scripting en Sistemas Operativos**.
 
-El contenido técnico de esta guía se basa en dicho material.
+El contenido técnico se organiza a partir de ese material. Los ejemplos deben probarse en un entorno compatible con Bash.
