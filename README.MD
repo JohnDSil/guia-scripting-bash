@@ -1,67 +1,117 @@
+# Bash scripting desde cero
 
-# Guía de Scripting en Bash desde Cero
+Repositorio de aprendizaje sobre **lenguajes de scripting en sistemas operativos**, basado en el documento *Ud1. Lenguajes de Scripting en Sistemas Operativos* del ciclo formativo de Administración de Sistemas Informáticos en Red (ASIR).
 
-Repositorio de estudio con capítulos, ejemplos y ejercicios prácticos organizados a partir del material de clase **Ud1. - Lenguajes de scripting en Sistemas Operativos**.
+El objetivo es aprender progresivamente a crear, ejecutar y depurar scripts en Bash, con explicaciones, ejemplos prácticos y ejercicios.
 
-## Objetivos
+## 📚 Contenidos
 
-- Comprender qué es un script Bash.
-- Aprender a crear y ejecutar scripts.
-- Practicar entrada, salida y variables.
-- Utilizar operaciones, condicionales y bucles.
-- Trabajar con parámetros, funciones y menús.
-- Practicar técnicas de depuración.
-- Resolver ejercicios y un proyecto final.
+El repositorio sigue los principales apartados del temario:
 
-## Empieza aquí
+1. Introducción a los lenguajes de scripting.
+2. Creación, ejecución y depuración de scripts.
+3. Salida estándar: `echo`.
+4. Entrada estándar: `read`.
+5. Variables del shell y variables de entorno.
+6. Estructuras condicionales: `if` y `case`.
+7. Operaciones aritméticas.
+8. Bucles: `for`, `while` y `until`.
+9. Parámetros y argumentos de los scripts.
+10. Estructura `select`.
+11. Funciones.
+12. Códigos de salida: `exit`, `return` y `$?`.
+13. Depuración de scripts.
+14. Interfaces de texto con `dialog`.
 
-1. Lee la [guía general](GUIA.md).
-2. Sigue la [ruta de aprendizaje](RUTA-DE-APRENDIZAJE.md).
-3. Estudia los capítulos en orden.
-4. Consulta los ejemplos.
-5. Resuelve la práctica antes de mirar las soluciones.
-6. Completa el proyecto final.
+## 📁 Estructura del repositorio
 
-## Capítulos
+- `GUIA.md`: guía general del temario.
+- `RUTA-DE-APRENDIZAJE.md`: orden recomendado para estudiar.
+- `ERRORES-FRECUENTES.md`: errores habituales al escribir scripts.
+- `EJERCICIOS.md`: ejercicios de aprendizaje.
+- `PRACTICA.md`: actividades prácticas adicionales.
+- `SOLUCIONES.md`: soluciones de los ejercicios.
+- `EXAMEN.md`: prueba de repaso.
+- `SOLUCIONES-EXAMEN.md`: respuestas del examen.
+- `PROYECTO-FINAL.md`: proyecto práctico integrador.
+- `capitulos/`: explicaciones organizadas por temas.
+- `ejemplos/`: scripts de ejemplo.
+- `recursos/`: información complementaria sobre el material utilizado.
 
-1. [Introducción a Bash](capitulos/01-Introduccion.md)
-2. [Entrada, salida y variables](capitulos/02-entrada-salida-variables.md)
-3. [Operaciones y expresiones](capitulos/03-operaciones.md)
-4. [Condicionales](capitulos/04-condicionales.md)
-5. [Bucles](capitulos/05-bucles.md)
-6. [Parámetros y funciones](capitulos/06-parametros-funciones.md)
-7. [Depuración y dialog](capitulos/07-depuracion-dialog.md)
+## 🚀 Cómo empezar
 
-## Ejercicios y proyectos
+### 1. Leer la guía
 
-- [Ejercicios generales](EJERCICIOS.md)
-- [Cuaderno de práctica](PRACTICA.md)
-- [Soluciones](SOLUCIONES.md)
-- [Proyecto final](PROYECTO-FINAL.md)
-- [Errores frecuentes](ERRORES-FRECUENTES.md)
+Comienza por [`GUIA.md`](GUIA.md) para conocer los conceptos básicos y las instrucciones de Bash.
 
-## Ejemplos de código
+### 2. Estudiar los capítulos
 
-- [Introducción](ejemplos/01-hola-mundo.sh)
-- [Variables](ejemplos/02-variables.sh)
-- [Operaciones](ejemplos/03-operaciones.sh)
-- [Condicionales](ejemplos/04-condicionales.sh)
-- [Bucles](ejemplos/05-bucles.sh)
-- [Parámetros y funciones](ejemplos/06-parametros-funciones.sh)
-- [Depuración](ejemplos/07-depuracion.sh)
+Continúa con los archivos de la carpeta `capitulos/`, respetando el orden recomendado en [`RUTA-DE-APRENDIZAJE.md`](RUTA-DE-APRENDIZAJE.md).
 
-## Cómo utilizar el repositorio
+### 3. Revisar los ejemplos
 
-1. Lee el capítulo correspondiente.
-2. Examina el ejemplo de código.
-3. Intenta resolver los ejercicios sin consultar las soluciones.
-4. Comprueba el resultado en un entorno compatible con Bash.
-5. Marca tu progreso en la ruta de aprendizaje.
+Consulta los archivos de `ejemplos/` y analiza cómo se aplican los conceptos en scripts concretos.
 
-## Fuente y alcance
+### 4. Practicar
 
-La fuente técnica prevista para esta guía es el material de clase **Ud1. - Lenguajes de scripting en Sistemas Operativos**.
+Realiza los ejercicios de `EJERCICIOS.md` y `PRACTICA.md`. Intenta resolverlos antes de consultar `SOLUCIONES.md`.
 
-La estructura del repositorio, las listas de seguimiento y la organización de los ejercicios son recursos didácticos para facilitar el estudio. Los ejemplos deben revisarse frente al PDF antes de considerar que reproducen fielmente todo su contenido.
+### 5. Repasar lo aprendido
 
-El repositorio almacena los archivos; GitHub no ejecuta automáticamente los scripts Bash por el mero hecho de subirlos.
+Cuando hayas estudiado el temario, realiza el examen y desarrolla el proyecto final.
+
+## 💻 Ejecutar un script
+
+Los scripts de ejemplo están escritos para Bash. En un sistema Linux con Bash instalado, puedes ejecutarlos desde un terminal.
+
+Por ejemplo, si el archivo se llama `hola-mundo.sh`:
+
+```bash
+chmod +x hola-mundo.sh
+./hola-mundo.sh
+```
+
+También puedes ejecutar un script indicando el intérprete:
+
+```bash
+bash hola-mundo.sh
+```
+
+El permiso de ejecución es necesario para ejecutar directamente el archivo con `./`. Si lo ejecutas mediante `bash nombre_script.sh`, Bash lee el archivo como argumento.
+
+## 🧰 Contenidos que aprenderás
+
+Durante el recorrido practicarás:
+
+- Crear scripts con la línea inicial `#!/bin/bash`.
+- Mostrar información mediante `echo`, incluida la opción `-n`.
+- Leer datos introducidos por el usuario con `read`.
+- Declarar variables y utilizar variables de entorno.
+- Trabajar con comillas simples y dobles.
+- Utilizar sustitución de comandos mediante `$(...)`.
+- Realizar operaciones aritméticas.
+- Tomar decisiones mediante `if` y `case`.
+- Repetir instrucciones con bucles.
+- Recibir argumentos desde la línea de comandos.
+- Organizar código mediante funciones.
+- Interpretar los códigos de salida.
+- Depurar scripts.
+- Crear menús e interfaces de texto con `dialog`.
+
+## 📖 Fuente del material
+
+El contenido técnico se basa en el documento de la unidad didáctica *Lenguajes de Scripting en Sistemas Operativos* proporcionado para este proyecto.
+
+Los archivos de este repositorio son material de estudio organizado con fines educativos; no sustituyen al documento original ni constituyen una publicación oficial del centro educativo.
+
+## ⚠️ Recomendaciones
+
+- Lee los scripts antes de ejecutarlos.
+- Practica en un entorno de pruebas.
+- Comprueba las rutas y los nombres de archivo antes de realizar operaciones sobre ellos.
+- No ejecutes scripts con privilegios de administrador sin comprender sus instrucciones.
+- No concedas permisos de escritura o ejecución más amplios de los necesarios.
+
+## 🎯 Objetivo final
+
+Al terminar el recorrido, deberías ser capaz de comprender y escribir scripts básicos de Bash, utilizar variables, condiciones, bucles y funciones, recibir argumentos, gestionar códigos de salida y aplicar técnicas de depuración de acuerdo con los contenidos estudiados.
