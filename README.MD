@@ -24,7 +24,7 @@ Repositorio de estudio con capítulos, ejemplos y ejercicios prácticos organiza
 
 ## Capítulos
 
-1. [Introducción a Bash](capitulos/01-introduccion.md)
+1. [Introducción a Bash](capitulos/01-Introduccion.md)
 2. [Entrada, salida y variables](capitulos/02-entrada-salida-variables.md)
 3. [Operaciones y expresiones](capitulos/03-operaciones.md)
 4. [Condicionales](capitulos/04-condicionales.md)
