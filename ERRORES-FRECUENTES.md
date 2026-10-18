@@ -1,119 +1,351 @@
+# Errores frecuentes en Bash
 
-# Errores frecuentes al practicar Bash
+Este documento recoge errores habituales al crear y ejecutar scripts de Bash. Los ejemplos se relacionan con los contenidos de la unidad *Lenguajes de Scripting en Sistemas Operativos*.
 
-## 1. El script no muestra el texto esperado
+## 1. Olvidar la línea inicial del script
 
-**Revisa:**
-- Que la instrucción `echo` esté escrita correctamente.
-- Que el mensaje esté entre comillas cuando corresponda.
-- Que hayas guardado los cambios en el archivo correcto.
+La primera línea identifica el intérprete que se utilizará al ejecutar directamente el archivo.
 
-**Prueba:**
+**Incorrecto o incompleto:**
 
 ```bash
 echo "Hola, mundo"
 ```
 
-## 2. Una variable no muestra el valor esperado
+**Forma recomendada en el temario:**
 
-**Revisa:**
-- Que hayas asignado un valor a la variable.
-- Que el nombre sea el mismo al asignarla y consultarla.
-- Que no hayas añadido espacios alrededor de `=` en una asignación sencilla.
+```bash
+#!/bin/bash
+echo "Hola, mundo"
+```
 
-**Ejemplo:**
+La línea `#!/bin/bash` indica que el script debe ejecutarse con Bash cuando se utiliza la ejecución directa y el sistema reconoce esa ruta.
+
+## 2. Olvidar el permiso de ejecución
+
+Al ejecutar un archivo directamente con `./`, debe tener permiso de ejecución.
+
+```bash
+chmod +x hola.sh
+./hola.sh
+```
+
+Otra posibilidad es ejecutarlo indicando el intérprete:
+
+```bash
+bash hola.sh
+```
+
+## 3. Confundir `echo` con `echo -n`
+
+`echo` normalmente termina su salida con un salto de línea. La opción `-n` evita ese salto final.
+
+```bash
+#!/bin/bash
+echo -n "Introduce tu nombre: "
+read nombre
+echo "Hola, $nombre"
+```
+
+Si se necesita que la entrada se escriba a continuación del mensaje, `-n` resulta útil.
+
+## 4. Confundir las comillas simples y dobles
+
+Las comillas simples conservan literalmente el contenido. Las comillas dobles permiten la expansión de variables.
+
+```bash
+#!/bin/bash
+nombre="Ana"
+
+echo 'Hola, $nombre'
+echo "Hola, $nombre"
+```
+
+La primera línea muestra literalmente `$nombre`; la segunda muestra el valor de la variable.
+
+## 5. Escribir mal una asignación
+
+En una asignación de variable de Bash no deben ponerse espacios alrededor de `=`.
+
+**Incorrecto:**
+
+```bash
+nombre = "Ana"
+```
+
+**Correcto:**
 
 ```bash
 nombre="Ana"
-echo "$nombre"
 ```
 
-## 3. Las comillas cambian el resultado
+## 6. Olvidar los espacios en una condición
 
-Las comillas simples muestran el texto de forma literal. Las comillas dobles permiten la expansión de variables.
+Cuando se utiliza la forma `[ ... ]`, deben respetarse los espacios que delimitan la expresión.
 
-**Prueba:**
+**Incorrecto:**
 
 ```bash
-nombre="Ana"
-echo "$nombre"
-echo '$nombre'
+if [ "$numero"-gt 0 ]; then
+    echo "Positivo"
+fi
 ```
 
-Compara las dos salidas.
-
-## 4. Una operación no produce el resultado esperado
-
-**Revisa:**
-- Que los valores numéricos sean los esperados.
-- Que los operadores estén escritos correctamente.
-- Que en el ejemplo con `expr` haya espacios entre los elementos de la operación.
-- Que `bc` esté disponible si utilizas ese ejemplo.
-
-**Prueba:**
+**Correcto:**
 
 ```bash
-a=5
-b=3
-echo $((a+b))
-expr 5 + 3
+if [ "$numero" -gt 0 ]; then
+    echo "Positivo"
+fi
 ```
 
-## 5. Un condicional no entra en la rama esperada
+## 7. Olvidar cerrar una estructura condicional
 
-**Revisa:**
-- La condición.
-- Los valores comparados.
-- La estructura `if`, `then`, `else` y `fi`.
-- Que la entrada sea adecuada para la comparación utilizada.
-
-## 6. Un bucle no termina
-
-**Revisa:**
-- La condición de repetición.
-- El valor inicial del contador.
-- Que el contador cambie cuando sea necesario.
-- La condición de salida.
-
-Un `while` o un `until` puede repetir indefinidamente si la condición nunca cambia de forma que permita terminar.
-
-## 7. Los parámetros están vacíos
-
-**Revisa:**
-- Cómo has ejecutado el script.
-- Si has proporcionado argumentos.
-- Qué parámetro estás consultando.
-
-**Ejemplo:**
+Un bloque `if` debe terminar con `fi`.
 
 ```bash
-echo "Primer parámetro: $1"
-echo "Total de parámetros: $#"
+#!/bin/bash
+
+if [ -f "informe.txt" ]; then
+    echo "El archivo existe."
+else
+    echo "El archivo no existe."
+fi
 ```
 
-## 8. No sabes por qué falla el script
+En una estructura `case`, el bloque se cierra con `esac`.
 
-El material presenta estas opciones de comprobación:
+## 8. No contemplar una opción desconocida en `case`
+
+El patrón `*` permite tratar las opciones que no coinciden con los casos anteriores.
 
 ```bash
-bash -n archivo.sh
-bash -v archivo.sh
-bash -x archivo.sh
+#!/bin/bash
+read -p "Elige una opción: " opcion
+
+case "$opcion" in
+    1)
+        echo "Opción 1"
+        ;;
+    2)
+        echo "Opción 2"
+        ;;
+    *)
+        echo "Opción no válida"
+        ;;
+esac
 ```
 
-- `bash -n`: comprobar la sintaxis.
-- `bash -v`: observar el contenido leído durante la ejecución.
-- `bash -x`: seguir la ejecución con información de depuración.
+## 9. Crear un bucle que no termina
 
-## 9. Un ejemplo de dialog no funciona
+Un bucle como `while` debe tener una condición que pueda llegar a ser falsa.
 
-Comprueba si `dialog` está disponible en el entorno donde ejecutas el script. Guardar el ejemplo en GitHub no instala la herramienta.
+**Ejemplo problemático:**
 
-## 10. Método de diagnóstico
+```bash
+i=1
+while [ "$i" -le 5 ]; do
+    echo "$i"
+done
+```
 
-1. Relee el mensaje de error.
-2. Comprueba el nombre del archivo.
-3. Revisa las comillas, variables y estructura del código.
-4. Utiliza las opciones de depuración estudiadas.
-5. Corrige una cosa cada vez.
-6. Ejecuta de nuevo el ejemplo y compara el resultado.
+La variable `i` nunca cambia, por lo que la condición continúa siendo verdadera.
+
+**Corregido:**
+
+```bash
+i=1
+while [ "$i" -le 5 ]; do
+    echo "$i"
+    i=$((i + 1))
+done
+```
+
+## 10. Confundir `while` y `until`
+
+- `while` repite el bloque mientras la condición sea verdadera.
+- `until` repite el bloque mientras la condición sea falsa.
+
+```bash
+#!/bin/bash
+i=1
+
+until [ "$i" -gt 5 ]; do
+    echo "$i"
+    i=$((i + 1))
+done
+```
+
+En este ejemplo, el bucle termina cuando `i` es mayor que 5.
+
+## 11. Dividir entre cero
+
+Antes de efectuar una división, comprueba que el divisor no sea cero.
+
+```bash
+#!/bin/bash
+read -p "Dividendo: " a
+read -p "Divisor: " b
+
+if [ "$b" -ne 0 ]; then
+    echo "Resultado: $((a / b))"
+else
+    echo "Error: el divisor no puede ser cero."
+fi
+```
+
+Este ejemplo presupone que ambas entradas son números enteros válidos.
+
+## 12. Confundir la aritmética entera con la decimal
+
+La expansión aritmética de Bash `$((...))` se utiliza para operaciones con enteros.
+
+```bash
+resultado=$((5 + 3))
+echo "$resultado"
+```
+
+Para operaciones con decimales, el material presenta `bc`, que debe estar disponible en el sistema.
+
+```bash
+echo "5.5 + 2.3" | bc
+```
+
+## 13. Perder el valor de `$?`
+
+`$?` contiene el código de salida del último comando ejecutado. Si ejecutas otro comando antes de consultarlo, el valor puede cambiar.
+
+**Correcto:**
+
+```bash
+ls archivo.txt
+estado=$?
+echo "Código de salida: $estado"
+```
+
+Guarda el resultado inmediatamente después del comando que quieras comprobar.
+
+## 14. Confundir `$@`, `$*` y `$#`
+
+Estas variables especiales tienen propósitos diferentes:
+
+- `$#`: número de argumentos recibidos.
+- `$@`: argumentos recibidos.
+- `$*`: todos los argumentos considerados conjuntamente, con un comportamiento que depende de cómo se cite la expansión.
+
+Para recorrer los argumentos conservando los que contienen espacios, utiliza:
+
+```bash
+for argumento in "$@"; do
+    echo "$argumento"
+done
+```
+
+## 15. Confundir `return` y `exit`
+
+`return` se utiliza para terminar una función y establecer su estado de retorno. `exit` finaliza el script o el shell que lo está ejecutando.
+
+```bash
+#!/bin/bash
+
+mi_funcion() {
+    return 0
+}
+
+mi_funcion
+echo "Código de la función: $?"
+```
+
+Para finalizar un script con un código específico:
+
+```bash
+exit 1
+```
+
+No confundas el estado de una función con un resultado numérico que quieras imprimir.
+
+## 16. Olvidar las comillas al usar rutas
+
+Si una ruta contiene espacios, es importante protegerla frente a la separación de palabras.
+
+**Recomendado:**
+
+```bash
+ruta="/home/ana/Mis documentos/informe.txt"
+
+if [ -f "$ruta" ]; then
+    echo "El archivo existe."
+fi
+```
+
+Las comillas alrededor de `"$ruta"` permiten utilizar la ruta completa como un único argumento.
+
+## 17. Confundir las opciones de depuración
+
+Bash dispone de opciones distintas para diferentes tareas:
+
+| Opción | Función |
+|---|---|
+| `bash -n script.sh` | Comprueba la sintaxis sin ejecutar el script. |
+| `bash -v script.sh` | Muestra las líneas del script conforme Bash las lee. |
+| `bash -x script.sh` | Muestra las instrucciones y expansiones durante la ejecución. |
+
+No son opciones equivalentes: elige la que corresponda al tipo de problema que quieras investigar.
+
+## 18. No comprobar la sintaxis antes de ejecutar
+
+Si sospechas que hay un error sintáctico, comprueba el archivo con:
+
+```bash
+bash -n script.sh
+```
+
+Esta comprobación ayuda a detectar errores sintácticos, aunque no garantiza que el script vaya a funcionar correctamente en todos los casos.
+
+## 19. Olvidar las comillas al usar `basename`
+
+Si la ruta puede contener espacios, utiliza comillas.
+
+```bash
+ruta="/home/ana/Mis documentos/informe.txt"
+archivo=$(basename "$ruta")
+
+echo "$archivo"
+```
+
+## 20. Dar permisos excesivos
+
+Evita conceder permisos más amplios de los necesarios.
+
+Para poder ejecutar un script como usuario propietario, normalmente basta con:
+
+```bash
+chmod u+x script.sh
+```
+
+No utilices permisos como `777` de manera automática: permiten a todos los usuarios leer, escribir y ejecutar el archivo.
+
+## 21. Ejecutar un script sin revisar lo que hace
+
+Antes de ejecutar un script, especialmente si trabaja con archivos o directorios:
+
+1. Lee su contenido.
+2. Comprueba las rutas utilizadas.
+3. Revisa los comandos que modifican o eliminan archivos.
+4. Evita ejecutarlo con privilegios elevados si no son necesarios.
+5. Prueba primero con datos que puedas recuperar.
+
+## Lista de comprobación
+
+Antes de dar por terminado un script, verifica:
+
+- [ ] Incluye `#!/bin/bash`.
+- [ ] Las asignaciones están escritas correctamente.
+- [ ] Las variables están entre comillas cuando corresponde.
+- [ ] Las estructuras `if`, `case` y los bucles están cerrados.
+- [ ] Los bucles tienen una condición de finalización.
+- [ ] Las operaciones aritméticas contemplan los casos problemáticos.
+- [ ] Los argumentos se interpretan correctamente.
+- [ ] Los códigos de salida se comprueban en el momento adecuado.
+- [ ] La sintaxis se ha revisado.
+- [ ] El script se ha probado antes de utilizarlo con datos importantes.
