@@ -1,86 +1,102 @@
 
-# Capítulo 5. Bucles
+# Capítulo 6. Parámetros y funciones
 
 ## Objetivos
 
-- Repetir instrucciones.
-- Reconocer `for`, `while` y `until`.
-- Utilizar `break` y `continue`.
+- Recibir parámetros al ejecutar un script.
+- Crear menús con `select`.
+- Organizar instrucciones mediante funciones.
+- Comprender los códigos de retorno.
 
-## 1. Bucle for
+## 1. Parámetros de un script
+
+Un script puede recibir argumentos al ejecutarse:
+
+```bash
+#!/bin/bash
+echo "Primer parámetro: $1"
+echo "Número de parámetros: $#"
+```
+
+Por ejemplo, si el archivo se llama `argumentos.sh`, puedes ejecutarlo así:
+
+```bash
+bash argumentos.sh Ana
+```
+
+El material también presenta `$*` y `$@` para referirse al conjunto de parámetros.
+
+## 2. Menús con select
+
+El material presenta `select` para construir menús:
+
+```bash
+#!/bin/bash
+PS3="Selecciona una opción: "
+
+select opcion in "Saludar" "Salir"
+do
+    case "$opcion" in
+        "Saludar")
+            echo "Hola"
+            ;;
+        "Salir")
+            break
+            ;;
+        *)
+            echo "Opción no reconocida"
+            ;;
+    esac
+done
+```
+
+La variable `PS3` permite establecer el mensaje de selección.
+
+## 3. Funciones
+
+Una función agrupa instrucciones que se pueden invocar desde distintas partes del script.
+
+```bash
+#!/bin/bash
+
+saludar() {
+    echo "Hola"
+}
+
+saludar
+```
+
+## 4. Códigos de retorno
+
+El material presenta `return`, `exit` y `$?`:
+
+- `return` permite devolver un estado desde una función.
+- `exit` termina el script con un estado de salida.
+- `$?` permite consultar el código de retorno del último comando.
 
 Ejemplo:
 
 ```bash
 #!/bin/bash
-for numero in 1 2 3 4 5
-do
-    echo "$numero"
-done
-```
-
-El bucle recorre los valores indicados y ejecuta las instrucciones para cada uno.
-
-## 2. Bucle while
-
-Ejemplo:
-
-```bash
-#!/bin/bash
-contador=1
-
-while [ "$contador" -le 5 ]
-do
-    echo "$contador"
-    contador=$((contador+1))
-done
-```
-
-El bucle continúa mientras la condición se cumpla.
-
-## 3. Bucle until
-
-`until` permite repetir instrucciones hasta que la condición se cumpla.
-
-```bash
-#!/bin/bash
-contador=1
-
-until [ "$contador" -gt 5 ]
-do
-    echo "$contador"
-    contador=$((contador+1))
-done
-```
-
-## 4. Control de los bucles
-
-El material incluye estas instrucciones:
-
-- `break`: permite salir de un bucle.
-- `continue`: permite continuar con la siguiente iteración.
-
-## 5. Variable RANDOM
-
-El material también presenta `RANDOM`:
-
-```bash
-echo "$RANDOM"
+true
+echo "$?"
 ```
 
 ## Ejercicios
 
-1. Muestra los números del 1 al 5 con `for`.
-2. Muestra los números del 1 al 10 con `while`.
-3. Repite un bloque usando `until`.
-4. Modifica un bucle para que termine cuando se alcance un valor determinado.
-5. Prueba `break` en un bucle.
-6. Prueba `continue` en un bucle.
-7. Muestra el valor de `RANDOM` varias veces.
+1. Crea un script que muestre el primer parámetro recibido.
+2. Muestra el número de parámetros usando `$#`.
+3. Prueba a ejecutar el script con dos argumentos.
+4. Crea una función llamada `saludar`.
+5. Crea una función que muestre un mensaje y llámala dos veces.
+6. Construye un menú sencillo con `select`.
+7. Consulta `$?` después de ejecutar un comando.
+8. Crea un script que termine mediante `exit`.
 
 ## Comprobación
 
-- [ ] He utilizado `for`.
-- [ ] He utilizado `while`.
-- [ ] He utilizado `until`.
-- [ ] Comprendo la diferencia entre `break` y `continue`.
+- [ ] He utilizado `$1`.
+- [ ] He utilizado `$#`.
+- [ ] He creado una función.
+- [ ] He probado un menú con `select`.
+- [ ] He consultado un código de retorno.
