@@ -9,12 +9,12 @@ El objetivo es aprender a crear, ejecutar, depurar y organizar scripts, desde la
 ### Capítulos
 
 1. [Introducción a Bash](capitulos/01-Introduccion.md)
-2. [Entrada, salida y variables](02-entrada-salida-variables.md)
-3. [Operaciones y expresiones](03-operaciones.md)
-4. [Condicionales](04-condicionales.md)
-5. [Bucles](05-bucles.md)
-6. [Parámetros y funciones](06-parametros-funcioines.md)
-7. [Depuración y dialog](07-depuracion-dialog.md)
+2. [Entrada, salida y variables](capitulos/02-entrada-salida-variables.md)
+3. [Operaciones y expresiones](capitulos/03-operaciones.md)
+4. [Condicionales](capitulos/04-condicionales.md)
+5. [Bucles](capitulos/05-bucles.md)
+6. [Parámetros y funciones](capitulos/06-parametros-funcioines.md)
+7. [Depuración y dialog](capitulos/07-depuracion-dialog.md)
 
 ### Ejercicios y prácticas
 
