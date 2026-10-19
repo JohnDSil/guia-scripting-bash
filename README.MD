@@ -13,7 +13,7 @@ El objetivo es aprender a crear, ejecutar, depurar y organizar scripts, desde la
 3. [Operaciones y expresiones](capitulos/03-operaciones.md)
 4. [Condicionales](capitulos/04-condicionales.md)
 5. [Bucles](capitulos/05-bucles.md)
-6. [Parámetros y funciones](capitulos/06-parametros-funcioines.md)
+6. [Parámetros y funciones](capitulos/06-parametros-funciones.md)
 7. [Depuración y dialog](capitulos/07-depuracion-dialog.md)
 
 ### Ejercicios y prácticas
