@@ -8,7 +8,7 @@ El objetivo es aprender a crear, ejecutar, depurar y organizar scripts, desde la
 
 ### Capítulos
 
-1. [Introducción a Bash](01-Introduccion.md)
+1. [Introducción a Bash](capitulos/01-Introduccion.md)
 2. [Entrada, salida y variables](02-entrada-salida-variables.md)
 3. [Operaciones y expresiones](03-operaciones.md)
 4. [Condicionales](04-condicionales.md)
